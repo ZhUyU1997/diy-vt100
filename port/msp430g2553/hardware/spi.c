@@ -1,9 +1,6 @@
 #include <diy-vt100/msp430g2553/spi.h>
+#include <diy-vt100/msp430g2553/port1.h>
 #include <diy-vt100/common.h>
-
-#define UCB0CLK BIT5
-#define UCB0SIMO BIT7
-//#define UCB0SOMI BIT6
 
 void spi_init(void)
 {

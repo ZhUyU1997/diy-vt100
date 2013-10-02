@@ -1,291 +1,380 @@
-# EESchema Netlist Version 1.1 created  Wed 12 Jun 2013 11:25:14 PM IST
-(
- ( /51921EED bnc B1 BUZZER
-  ( 1 N-000028 )
-  ( 2 GND )
- )
- ( /51921F0F D3 D1 DIODE
-  ( 1 N-000028 )
-  ( 2 GND )
- )
- ( /51B86386 PINHEAD1-3 K1 CONN_3
-  ( 1 VCC )
-  ( 2 GND )
-  ( 3 GND )
- )
- ( /51921B2F LED-3MM KBD_LOCKED1 LED
-  ( 1 N-000034 )
-  ( 2 GND )
- )
- ( /51921AAE pin_array_4x2 LCD1 NOKIA1100_LCD
-  ( 1 N-000024 )
-  ( 2 N-000050 )
-  ( 3 GND )
-  ( 4 N-000076 )
-  ( 5 N-000032 )
-  ( 6 VCC )
-  ( 7 VCC )
-  ( 8 N-000037 )
-  ( 9 ? )
- )
- ( /51921B2A LED-3MM OFFLINE1 LED
-  ( 1 N-000033 )
-  ( 2 GND )
- )
- ( /51921B09 LED-3MM ONLINE1 LED
-  ( 1 N-000036 )
-  ( 2 GND )
- )
- ( /51B862D3 pin_array_12x2 P1 FC_LEFT
-  ( 1 VCC )
-  ( 2 ? )
-  ( 3 ? )
-  ( 4 ? )
-  ( 5 ? )
-  ( 6 ? )
-  ( 7 ? )
-  ( 8 ? )
-  ( 9 ? )
-  ( 10 ? )
- )
- ( /51B8701A pin_array_12x2 P2 FC_RIGHT
-  ( 1 GND )
-  ( 2 ? )
-  ( 3 ? )
-  ( 4 ? )
-  ( 5 ? )
-  ( 6 ? )
-  ( 7 ? )
-  ( 8 ? )
-  ( 9 ? )
-  ( 10 ? )
- )
- ( /5197035F pin_array_3x2 P3 MINIDIN_6_FEMALE
-  ( 1 N-000018 )
-  ( 2 ? )
-  ( 3 GND )
-  ( 4 VCC )
-  ( 5 N-000072 )
-  ( 6 ? )
- )
- ( /51921B34 LED-3MM PROG_1 LED
-  ( 1 N-000035 )
-  ( 2 GND )
- )
- ( /51921B3D LED-3MM PROG_2 LED
-  ( 1 N-000030 )
-  ( 2 GND )
- )
- ( /51921B57 LED-3MM PROG_3 LED
-  ( 1 N-000012 )
-  ( 2 GND )
- )
- ( /51921B70 LED-3MM PROG_4 LED
-  ( 1 N-000029 )
-  ( 2 GND )
- )
- ( /51B73C83 TO92 Q1 BC548
-  ( 1 N-000037 )
-  ( 2 N-000038 )
-  ( 3 VCC )
- )
- ( /51B73C78 R3 R1 220
-  ( 1 N-000019 )
-  ( 2 N-000038 )
- )
- ( /51B74E6F R3 R2 R
-  ( 1 N-000047 )
-  ( 2 N-000029 )
- )
- ( /51B74E72 R3 R3 R
-  ( 1 N-000048 )
-  ( 2 N-000012 )
- )
- ( /51B74DA3 R3 R4 R
-  ( 1 N-000040 )
-  ( 2 N-000036 )
- )
- ( /51B74DA8 R3 R5 R
-  ( 1 N-000041 )
-  ( 2 N-000033 )
- )
- ( /51B74DD3 R3 R6 R
-  ( 1 N-000042 )
-  ( 2 N-000034 )
- )
- ( /51B74E7C R3 R7 R
-  ( 1 N-000049 )
-  ( 2 N-000030 )
- )
- ( /51B74E7F R3 R8 R
-  ( 1 N-000011 )
-  ( 2 N-000035 )
- )
- ( /51920588 $noname$ U1 MSP430G2553IN20
-  ( 1 VCC )
-  ( 2 N-000043 )
-  ( 3 ? )
-  ( 4 ? )
-  ( 5 ? )
-  ( 6 N-000044 )
-  ( 7 N-000045 )
-  ( 8 N-000018 )
-  ( 9 N-000072 )
-  ( 10 N-000019 )
-  ( 11 N-000050 )
-  ( 12 N-000076 )
-  ( 13 N-000032 )
-  ( 14 ? )
-  ( 15 ? )
-  ( 16 N-000024 )
-  ( 17 ? )
-  ( 18 ? )
-  ( 19 ? )
-  ( 20 GND )
- )
- ( /51A3A31F DIP-16__300 U2 74HC595
-  ( 1 N-000040 )
-  ( 2 N-000041 )
-  ( 3 N-000042 )
-  ( 4 N-000011 )
-  ( 5 N-000049 )
-  ( 6 N-000048 )
-  ( 7 N-000047 )
-  ( 8 GND )
-  ( 9 ? )
-  ( 10 N-000024 )
-  ( 11 N-000045 )
-  ( 12 N-000044 )
-  ( 13 GND )
-  ( 14 N-000043 )
-  ( 15 N-000028 )
-  ( 16 VCC )
- )
-)
-*
-{ Allowed footprints by component:
-$component D1
- D?
- S*
-$endlist
-$component KBD_LOCKED1
- LED-3MM
- LED-5MM
- LED-10MM
- LED-0603
- LED-0805
- LED-1206
- LEDV
-$endlist
-$component OFFLINE1
- LED-3MM
- LED-5MM
- LED-10MM
- LED-0603
- LED-0805
- LED-1206
- LEDV
-$endlist
-$component ONLINE1
- LED-3MM
- LED-5MM
- LED-10MM
- LED-0603
- LED-0805
- LED-1206
- LEDV
-$endlist
-$component PROG_1
- LED-3MM
- LED-5MM
- LED-10MM
- LED-0603
- LED-0805
- LED-1206
- LEDV
-$endlist
-$component PROG_2
- LED-3MM
- LED-5MM
- LED-10MM
- LED-0603
- LED-0805
- LED-1206
- LEDV
-$endlist
-$component PROG_3
- LED-3MM
- LED-5MM
- LED-10MM
- LED-0603
- LED-0805
- LED-1206
- LEDV
-$endlist
-$component PROG_4
- LED-3MM
- LED-5MM
- LED-10MM
- LED-0603
- LED-0805
- LED-1206
- LEDV
-$endlist
-$component R1
- R?
- SM0603
- SM0805
- R?-*
- SM1206
-$endlist
-$component R2
- R?
- SM0603
- SM0805
- R?-*
- SM1206
-$endlist
-$component R3
- R?
- SM0603
- SM0805
- R?-*
- SM1206
-$endlist
-$component R4
- R?
- SM0603
- SM0805
- R?-*
- SM1206
-$endlist
-$component R5
- R?
- SM0603
- SM0805
- R?-*
- SM1206
-$endlist
-$component R6
- R?
- SM0603
- SM0805
- R?-*
- SM1206
-$endlist
-$component R7
- R?
- SM0603
- SM0805
- R?-*
- SM1206
-$endlist
-$component R8
- R?
- SM0603
- SM0805
- R?-*
- SM1206
-$endlist
-$endfootprintlist
-}
+(export (version D)
+  (design
+    (source /home/kuldeep/my-work/msp430/diy-vt100/doc/msp430g2553/schematic/diy-vt100.sch)
+    (date "Sun 29 Sep 2013 06:43:26 PM IST")
+    (tool "eeschema (2013-june-11)-stable"))
+  (components
+    (comp (ref U2)
+      (value 74HC595)
+      (libsource (lib 74xx) (part 74HC595))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51A3A31F))
+    (comp (ref RV2)
+      (value POT)
+      (libsource (lib device) (part POT))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51A39DE0))
+    (comp (ref RV1)
+      (value POT)
+      (libsource (lib device) (part POT))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51A39DCA))
+    (comp (ref P1)
+      (value MINIDIN_6_FEMALE)
+      (libsource (lib minidin_6) (part MINIDIN_6_FEMALE))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 5197035F))
+    (comp (ref D1)
+      (value DIODE)
+      (libsource (lib device) (part DIODE))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921F0F))
+    (comp (ref B1)
+      (value BUZZER)
+      (libsource (lib capteurs) (part BUZZER))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921EED))
+    (comp (ref PROG_4)
+      (value LED)
+      (libsource (lib device) (part LED))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921B70))
+    (comp (ref PROG_3)
+      (value LED)
+      (libsource (lib device) (part LED))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921B57))
+    (comp (ref PROG_2)
+      (value LED)
+      (libsource (lib device) (part LED))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921B3D))
+    (comp (ref PROG_1)
+      (value LED)
+      (libsource (lib device) (part LED))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921B34))
+    (comp (ref KBD_LOCKED1)
+      (value LED)
+      (libsource (lib device) (part LED))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921B2F))
+    (comp (ref OFFLINE1)
+      (value LED)
+      (libsource (lib device) (part LED))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921B2A))
+    (comp (ref ONLINE1)
+      (value LED)
+      (libsource (lib device) (part LED))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921B09))
+    (comp (ref LCD1)
+      (value NOKIA1100_LCD)
+      (libsource (lib nokia1100_lcd) (part NOKIA1100_LCD))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51921AAE))
+    (comp (ref U1)
+      (value MSP430G2553IN20)
+      (libsource (lib embedded-microcontrollers) (part MSP430G2553IN20))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 51920588))
+    (comp (ref Q1)
+      (value BC148)
+      (footprint TO92)
+      (libsource (lib transistors) (part BC548))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 52481697))
+    (comp (ref R1)
+      (value "220 Ohm")
+      (libsource (lib device) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 524819EE)))
+  (libparts
+    (libpart (lib device) (part DIODE)
+      (description "Diode simple")
+      (footprints
+        (fp D?)
+        (fp S*))
+      (fields
+        (field (name Reference) D)
+        (field (name Value) DIODE)
+        (field (name Footprint) ~)
+        (field (name Datasheet) ~))
+      (pins
+        (pin (num 1) (name A) (type passive))
+        (pin (num 2) (name K) (type passive))))
+    (libpart (lib device) (part LED)
+      (footprints
+        (fp LED-3MM)
+        (fp LED-5MM)
+        (fp LED-10MM)
+        (fp LED-0603)
+        (fp LED-0805)
+        (fp LED-1206)
+        (fp LEDV))
+      (fields
+        (field (name Reference) D)
+        (field (name Value) LED)
+        (field (name Footprint) ~)
+        (field (name Datasheet) ~))
+      (pins
+        (pin (num 1) (name A) (type passive))
+        (pin (num 2) (name K) (type passive))))
+    (libpart (lib device) (part POT)
+      (description Potentionmetre)
+      (fields
+        (field (name Reference) RV)
+        (field (name Value) POT)
+        (field (name Footprint) ~)
+        (field (name Datasheet) ~))
+      (pins
+        (pin (num 1) (name 1) (type passive))
+        (pin (num 2) (name 2) (type passive))
+        (pin (num 3) (name 3) (type passive))))
+    (libpart (lib device) (part R)
+      (description Resistance)
+      (footprints
+        (fp R?)
+        (fp SM0603)
+        (fp SM0805)
+        (fp R?-*)
+        (fp SM1206))
+      (fields
+        (field (name Reference) R)
+        (field (name Value) R)
+        (field (name Footprint) ~)
+        (field (name Datasheet) ~))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib transistors) (part BC547)
+      (description "BC547, 45V Vce, 0.1A Ic, NPN, Small Signal Transistor,TO-92")
+      (docs http://www.fairchildsemi.com/ds/BC/BC547.pdf)
+      (footprints
+        (fp TO92*))
+      (fields
+        (field (name Reference) Q)
+        (field (name Value) BC547)
+        (field (name Footprint) TO92))
+      (pins
+        (pin (num 1) (name C) (type passive))
+        (pin (num 2) (name B) (type input))
+        (pin (num 3) (name E) (type passive))))
+    (libpart (lib 74xx) (part 74HC595)
+      (description "8 bits serial in // out Shift Register 3 State Out")
+      (docs 74xx/74HC595.pdf)
+      (fields
+        (field (name Reference) U)
+        (field (name Value) 74HC595)
+        (field (name Footprint) ~)
+        (field (name Datasheet) ~))
+      (pins
+        (pin (num 1) (name QB) (type 3state))
+        (pin (num 2) (name QC) (type 3state))
+        (pin (num 3) (name QD) (type 3state))
+        (pin (num 4) (name QE) (type 3state))
+        (pin (num 5) (name QF) (type 3state))
+        (pin (num 6) (name QG) (type 3state))
+        (pin (num 7) (name QH) (type 3state))
+        (pin (num 8) (name GND) (type power_in))
+        (pin (num 9) (name ~QH) (type output))
+        (pin (num 10) (name SRCLR) (type input))
+        (pin (num 11) (name SRCLK) (type input))
+        (pin (num 12) (name RCLK) (type input))
+        (pin (num 13) (name G) (type input))
+        (pin (num 14) (name SER) (type input))
+        (pin (num 15) (name QA) (type 3state))
+        (pin (num 16) (name VCC) (type power_in))))
+    (libpart (lib nokia1100_lcd) (part NOKIA1100_LCD)
+      (fields
+        (field (name Reference) L)
+        (field (name Value) NOKIA1100_LCD))
+      (pins
+        (pin (num 1) (name RESET) (type input))
+        (pin (num 2) (name SS) (type input))
+        (pin (num 3) (name GND) (type power_out))
+        (pin (num 4) (name MOSI) (type input))
+        (pin (num 5) (name MCLK) (type input))
+        (pin (num 6) (name VDDI) (type power_in))
+        (pin (num 7) (name VDD) (type power_in))
+        (pin (num 8) (name LED+) (type power_in))
+        (pin (num 9) (name NC) (type NotConnected))))
+    (libpart (lib embedded-microcontrollers) (part MSP430G2553IN20)
+      (fields
+        (field (name Reference) U)
+        (field (name Value) MSP430G2553IN20)
+        (field (name Footprint) ~)
+        (field (name Datasheet) ~))
+      (pins
+        (pin (num 1) (name DVCC) (type power_in))
+        (pin (num 2) (name P1.0/TA0CLK/ACLK/A0/CA0) (type BiDi))
+        (pin (num 3) (name P1.1/TA0.0/UCA0RXD/UCA0SOMI/A1/CA1) (type BiDi))
+        (pin (num 4) (name P1.2/TA0.1/UCA0TXD/UCA0SIMO/A2/CA2) (type BiDi))
+        (pin (num 5) (name P1.3/ADC10CLK/CAOUT/VREF-/VEREF-/A3/CA3) (type BiDi))
+        (pin (num 6) (name P1.4/SMCLK/UCB0STE/UCA0CLK/VREF+/VEREF+/A4/CA4/TCK) (type BiDi))
+        (pin (num 7) (name P1.5/TA0.0/UCB0CLK/UCA0STE/A5/CA5/TMS) (type BiDi))
+        (pin (num 8) (name P2.0/TA1.0) (type BiDi))
+        (pin (num 9) (name P2.1/TA1.1) (type BiDi))
+        (pin (num 10) (name P2.2/TA1.1) (type BiDi))
+        (pin (num 11) (name P2.3/TA1.0) (type BiDi))
+        (pin (num 12) (name P2.4/TA1.2) (type BiDi))
+        (pin (num 13) (name P2.5/TA1.2) (type BiDi))
+        (pin (num 14) (name P1.6/TA0.1/UCB0SOMI/UCB0SCL/A6/CA6/TDI/TCLK) (type BiDi))
+        (pin (num 15) (name P1.7/CAOUT/UCB0SIMO/UCB0SDA/A7/CA7/TDO/TDI) (type BiDi))
+        (pin (num 16) (name ~RST~/NMI/SBWTDIO) (type input))
+        (pin (num 17) (name TEST/SBWTCK) (type input))
+        (pin (num 18) (name XOUT/P2.7) (type BiDi))
+        (pin (num 19) (name XIN/P2.6/TA0.1) (type BiDi))
+        (pin (num 20) (name DVSS) (type power_in))))
+    (libpart (lib minidin_6) (part MINIDIN_6_FEMALE)
+      (fields
+        (field (name Reference) P)
+        (field (name Value) MINIDIN_6_FEMALE))
+      (pins
+        (pin (num 1) (name DATA) (type input))
+        (pin (num 2) (name NC) (type NotConnected))
+        (pin (num 3) (name GND) (type output))
+        (pin (num 4) (name VCC) (type input))
+        (pin (num 5) (name CLOCK) (type input))
+        (pin (num 6) (name NC) (type NotConnected))))
+    (libpart (lib capteurs) (part Buzzer)
+      (fields
+        (field (name Reference) X)
+        (field (name Value) Buzzer))
+      (pins
+        (pin (num 1) (name +) (type passive))
+        (pin (num 2) (name -) (type passive)))))
+  (libraries
+    (library (logical device)
+      (uri /usr/share/kicad/library/device.lib))
+    (library (logical transistors)
+      (uri /usr/share/kicad/library/transistors.lib))
+    (library (logical 74xx)
+      (uri /usr/share/kicad/library/74xx.lib))
+    (library (logical embedded-microcontrollers)
+      (uri lib/embedded-microcontrollers.lib))
+    (library (logical capteurs)
+      (uri lib/capteurs.lib))
+    (library (logical nokia1100_lcd)
+      (uri lib/nokia1100_lcd.lib))
+    (library (logical minidin_6)
+      (uri lib/minidin_6.lib)))
+  (nets
+    (net (code 1) (name "")
+      (node (ref LCD1) (pin 2))
+      (node (ref U1) (pin 11)))
+    (net (code 2) (name /5V)
+      (node (ref P1) (pin 1))
+      (node (ref P1) (pin 5))
+      (node (ref RV1) (pin 1)))
+    (net (code 3) (name "")
+      (node (ref U2) (pin 7))
+      (node (ref PROG_4) (pin 1)))
+    (net (code 4) (name "")
+      (node (ref U2) (pin 5))
+      (node (ref PROG_2) (pin 1)))
+    (net (code 5) (name "")
+      (node (ref U2) (pin 3))
+      (node (ref KBD_LOCKED1) (pin 1)))
+    (net (code 6) (name "")
+      (node (ref R1) (pin 2))
+      (node (ref Q1) (pin 2)))
+    (net (code 7) (name "")
+      (node (ref U1) (pin 12))
+      (node (ref LCD1) (pin 4)))
+    (net (code 8) (name "")
+      (node (ref LCD1) (pin 5))
+      (node (ref U1) (pin 13)))
+    (net (code 9) (name "")
+      (node (ref U1) (pin 14)))
+    (net (code 10) (name "")
+      (node (ref U1) (pin 15)))
+    (net (code 11) (name "")
+      (node (ref U1) (pin 16))
+      (node (ref LCD1) (pin 1))
+      (node (ref U2) (pin 10)))
+    (net (code 12) (name "")
+      (node (ref U1) (pin 17)))
+    (net (code 13) (name "")
+      (node (ref U1) (pin 18)))
+    (net (code 14) (name "")
+      (node (ref U1) (pin 19)))
+    (net (code 15) (name +3.3V)
+      (node (ref LCD1) (pin 6))
+      (node (ref Q1) (pin 1))
+      (node (ref U1) (pin 1))
+      (node (ref LCD1) (pin 7)))
+    (net (code 16) (name "")
+      (node (ref LCD1) (pin 8))
+      (node (ref Q1) (pin 3)))
+    (net (code 17) (name "")
+      (node (ref U1) (pin 6))
+      (node (ref U2) (pin 12)))
+    (net (code 18) (name "")
+      (node (ref U2) (pin 14))
+      (node (ref U1) (pin 2)))
+    (net (code 19) (name "")
+      (node (ref U2) (pin 11))
+      (node (ref U1) (pin 7)))
+    (net (code 20) (name "")
+      (node (ref R1) (pin 1))
+      (node (ref U1) (pin 10)))
+    (net (code 21) (name "")
+      (node (ref U2) (pin 1))
+      (node (ref ONLINE1) (pin 1)))
+    (net (code 22) (name "")
+      (node (ref OFFLINE1) (pin 1))
+      (node (ref U2) (pin 2)))
+    (net (code 23) (name "")
+      (node (ref U2) (pin 4))
+      (node (ref PROG_1) (pin 1)))
+    (net (code 24) (name "")
+      (node (ref U2) (pin 6))
+      (node (ref PROG_3) (pin 1)))
+    (net (code 25) (name VCC)
+      (node (ref U2) (pin 16)))
+    (net (code 26) (name GND)
+      (node (ref ONLINE1) (pin 2))
+      (node (ref PROG_1) (pin 2))
+      (node (ref PROG_2) (pin 2))
+      (node (ref PROG_3) (pin 2))
+      (node (ref OFFLINE1) (pin 2))
+      (node (ref PROG_4) (pin 2))
+      (node (ref B1) (pin 2))
+      (node (ref KBD_LOCKED1) (pin 2))
+      (node (ref LCD1) (pin 3))
+      (node (ref D1) (pin 2))
+      (node (ref U2) (pin 13))
+      (node (ref P1) (pin 3))
+      (node (ref U1) (pin 20))
+      (node (ref RV2) (pin 3))
+      (node (ref RV1) (pin 3))
+      (node (ref U2) (pin 8)))
+    (net (code 27) (name "")
+      (node (ref RV2) (pin 1)))
+    (net (code 28) (name +5V)
+      (node (ref P1) (pin 4)))
+    (net (code 30) (name /3V3)
+      (node (ref RV2) (pin 2))
+      (node (ref RV1) (pin 2))
+      (node (ref U1) (pin 9))
+      (node (ref U1) (pin 8)))
+    (net (code 31) (name "")
+      (node (ref U2) (pin 9)))
+    (net (code 32) (name "")
+      (node (ref LCD1) (pin 9)))
+    (net (code 33) (name "")
+      (node (ref U1) (pin 3)))
+    (net (code 34) (name "")
+      (node (ref U1) (pin 4)))
+    (net (code 35) (name "")
+      (node (ref U1) (pin 5)))
+    (net (code 36) (name "")
+      (node (ref P1) (pin 2)))
+    (net (code 37) (name "")
+      (node (ref P1) (pin 6)))
+    (net (code 39) (name "")
+      (node (ref D1) (pin 1))
+      (node (ref B1) (pin 1))
+      (node (ref U2) (pin 15)))))

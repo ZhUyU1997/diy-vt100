@@ -3,19 +3,16 @@
 
 #include <diy-vt100/common.h>
 
-typedef struct
-{
-	uint8_t buzzer:1;
-	uint8_t led_online:1;
-	uint8_t led_offline:1;
-	uint8_t led_kbdlock:1;
-	uint8_t led_prog1:1;
-	uint8_t led_prog2:1;
-	uint8_t led_prog3:1;
-	uint8_t led_prog4:1;
-}__attribute((packed)) ic_74xx595_t;
+#define BUZZER BIT0
+//#define LED_ONLINE BIT1
+//#define LED_OFFLINE BIT2
+//#define LED_KBDLOCK BIT3
+//#define LED_PROG1 BIT4
+//#define LED_PROG2 BIT5
+//#define LED_PROG3 BIT6
+//#define LED_PROG4 BIT7
 
-extern ic_74xx595_t ic_74xx595;
+extern uint8_t ic_74xx595;
 
 void ic_74xx595_refresh(void);
 

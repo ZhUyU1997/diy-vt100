@@ -6,7 +6,7 @@
 #include <diy-vt100/setting.h>
 
 /* tabulation clear */
-void vt100_TBC()
+void vt100_TBC(void)
 {
 	switch(param.data[0])
 	{
@@ -23,13 +23,13 @@ void vt100_TBC()
 }
 
 /* horizontal tabulation set */
-void vt100_HTS()
+void vt100_HTS(void)
 {
 	setting_tab_high(vt100_cursor.col);
 }
 
 /* give a horizontal tab */
-void vt100_HT()
+void vt100_HT(void)
 {
 	for(register col_t j = vt100_cursor.col + 1; j < SCREEN_COL; j++)
 	{

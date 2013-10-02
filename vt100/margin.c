@@ -2,7 +2,7 @@
 
 /* set top bottom margin */
 void 
-vt100_DECSTBM()
+vt100_DECSTBM(void)
 {
 	/* TODO: support margin */
 }

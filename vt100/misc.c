@@ -3,6 +3,7 @@
 #include <diy-vt100/vt100/buffer.h>
 #include <diy-vt100/vt100/state.h>
 
+#include <diy-vt100/common.h>
 #include <diy-vt100/param.h>
 #include <diy-vt100/setting.h>
 #include <diy-vt100/uart.h>
@@ -10,10 +11,8 @@
 #include <diy-vt100/bell.h>
 #include <diy-vt100/led.h>
 
-void vt100_init()
+void vt100_init(void)
 {
-	/* TODO: support Keyboard lock */
-
 	param.data[0] = 2;
 	vt100_ED();
 	
@@ -21,38 +20,41 @@ void vt100_init()
 	vt100_refresh_connect_mode();
 }
 
-void vt100_refresh_connect_mode()
+void vt100_refresh_connect_mode(void)
 {
-	const static edable_t map_loopback[2] = {DISABLE, ENABLE};
-	const static led_t led_to_off[] = {LOCAL, LINE};
-	const static led_t led_to_on[] = {LINE, LOCAL};
-
 	if(uart_disconnected())
 	{
 		/* force local mode if disconnected */
 		setting.bits.LOCAL = TRUE;
 	}
 	
-	uart_loopback(map_loopback[setting.bits.LOCAL]);
-	led_off(led_to_off[setting.bits.LOCAL]);
-	led_on(led_to_on[setting.bits.LOCAL]);
+	if(setting.bits.LOCAL)
+	{
+		uart_loopback(ENABLE);
+		led_off(LINE);
+		led_on(LOCAL);
+	}
+	else
+	{
+		uart_loopback(DISABLE);
+		led_off(LOCAL);
+		led_on(LINE);
+	}
 }
 
-bool_t __is_vt100_malfunctioning()
+bool_t __is_vt100_malfunctioning(void)
 {
 	return FALSE;
 }
 
 /* invoke self confidence test */
-void 
-vt100_DECTST()
+void vt100_DECTST(void)
 {
 	/* TODO: test the terminal */
 }
 
 /* keypad application mode */
-void
-vt100_DECKPAM()
+void vt100_DECKPAM(void)
 {
 	setting.bits.DECKPAM = (param.data[0]) ? TRUE : FALSE;
 }
@@ -79,15 +81,15 @@ void vt100_DECSCNM()
 }
 
 /* send answerback message */
-void vt100_ENQ()
+void vt100_ENQ(void)
 {
-	for(uint8_t i=0; i < answerback_size; i++)
+	for(uint8_t i=0; i < ANSWERBACK_SIZE; i++)
 	{
 		uart_send(parm_setting.answerback[i]);
 	}
 }
 
-void vt100_setting_high()
+void vt100_setting_high(void)
 {
 	switch(param.data[0])
 	{
@@ -129,7 +131,7 @@ void vt100_setting_high()
 	}
 }
 
-void vt100_setting_low()
+void vt100_setting_low(void)
 {
 	switch(param.data[0])
 	{
@@ -176,18 +178,14 @@ void vt100_setting_low()
 }
 
 /* load led's */
-void 
-vt100_DECLL()
+void vt100_DECLL(void)
 {
 	for(register uint8_t i=0; i < param.count; i++)
 	{
 		switch(param.data[i])
 		{
 			case 0:
-				led_off(PROG1);
-				led_off(PROG2);
-				led_off(PROG3);
-				led_off(PROG4);
+				led_off(PROG1 | PROG2 | PROG3 | PROG4);
 			break;
 			
 			case 1:
@@ -214,8 +212,7 @@ void vt100_XON(void)
 	setting.bits.XOFFED = FALSE;
 }
 
-void
-vt100_XOFF(void)
+void vt100_XOFF(void)
 {
 	if(! setting.bits.LOCAL)
 	{

@@ -1,104 +1,43 @@
 #include <diy-vt100/screen.h>
 #include <diy-vt100/msp430g2553/screen/nokia1100.h>
 #include <diy-vt100/msp430g2553/port2.h>
+#include <diy-vt100/msp430g2553/spi.h>
 
-#define NOKIA1100_ONLY_CLKTRANSITION() \
-		port2_low(NOKIA1100_CLK); \
-		port2_high(NOKIA1100_CLK)
+#define nokia1100_cs_low()  port2_low(NOKIA1100_SS)
+#define nokia1100_cs_high()  port2_high(NOKIA1100_SS)
 
-#define NOKIA1100_CLKTRANSITION_WITHDATA(data, bit) \
-		port2_low(NOKIA1100_CLK); \
-		if (data & bit) \
-		{ \
-			port2_high(NOKIA1100_MOSI); \
-		} \
-		else \
-		{ \
-			port2_low(NOKIA1100_MOSI); \
-		} \
-		 \
-		port2_high(NOKIA1100_CLK)
-
-void
-nokia1100_full_clear(void)
+void nokia1100_full_clear(void)
 {
 	uint16_t i = 864;
 	
-	port2_low(NOKIA1100_SS);
+	nokia1100_cs_low();
 	
 	/* send 0x00 in brust mode */
 	while(i--)
 	{
-		port2_high(NOKIA1100_MOSI);
-		
-		NOKIA1100_ONLY_CLKTRANSITION();
-
-		port2_low(NOKIA1100_MOSI);
-
-		NOKIA1100_ONLY_CLKTRANSITION();
-		NOKIA1100_ONLY_CLKTRANSITION();
-		NOKIA1100_ONLY_CLKTRANSITION();
-		NOKIA1100_ONLY_CLKTRANSITION();
-		NOKIA1100_ONLY_CLKTRANSITION();
-		NOKIA1100_ONLY_CLKTRANSITION();
-		NOKIA1100_ONLY_CLKTRANSITION();
-		NOKIA1100_ONLY_CLKTRANSITION();
+		spi_send9(BIT8);
 	}
 	
 	/* Disable display LCD */
-	port2_high(NOKIA1100_SS);
+	nokia1100_cs_high();
 }
 
 /* only used to send data in one go */
-void
-nokia1100_send_data(const uint8_t *data_array, const uint8_t size)
+void nokia1100_send_data(const uint8_t *data_array, const uint8_t size)
 {
-	uint8_t i;
-	uint8_t data;
+	nokia1100_cs_low();
 	
-	//port2_low(NOKIA1100_CLK | NOKIA1100_SS);
-	port2_low(NOKIA1100_CLK);
-	port2_low(NOKIA1100_SS);
-	
-	for(i=0; i < size; i++)
+	for(uint8_t i=0; i < size; i++)
 	{
-		data = data_array[i];
-		port2_high(NOKIA1100_MOSI);
-		port2_high(NOKIA1100_CLK);
-		
-		NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT7);
-		NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT6);
-		NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT5);
-		NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT4);
-		NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT3);
-		NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT2);
-		NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT1);
-		NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT0);
-		
-		port2_low(NOKIA1100_CLK);
+		spi_send9(BIT8 | data_array[i]);
 	}
 	
-	port2_high(NOKIA1100_SS);
+	nokia1100_cs_high();
 }
 
-void
-nokia1100_send_cmd(const uint8_t data)
+void nokia1100_send_cmd(const uint8_t data)
 {
-	port2_low(NOKIA1100_CLK);
-	port2_low(NOKIA1100_SS);
-
-	port2_low(NOKIA1100_MOSI);
-	port2_high(NOKIA1100_CLK);
-
-	NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT7);
-	NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT6);
-	NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT5);
-	NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT4);
-	NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT3);
-	NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT2);
-	NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT1);
-	NOKIA1100_CLKTRANSITION_WITHDATA(data, BIT0);
-	
-	port2_low(NOKIA1100_CLK);
-	port2_high(NOKIA1100_SS);
+	nokia1100_cs_low();
+	spi_send9(data);
+	nokia1100_cs_high();
 }

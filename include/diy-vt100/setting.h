@@ -4,7 +4,7 @@
 #include <diy-vt100/common.h>
 #include <diy-vt100/screen.h>
 
-#define answerback_size 20
+#define ANSWERBACK_SIZE 20
 
 /* ONLINE: 	(online mode|offline mode)
  * MODE: 	(vt52|ansi)
@@ -77,7 +77,7 @@ typedef struct
 	
 	uint8_t tabs[TABS_SIZE];
 
-	uint8_t answerback[answerback_size];
+	uint8_t answerback[ANSWERBACK_SIZE];
 }
 __attribute((packed)) setting_t;
 

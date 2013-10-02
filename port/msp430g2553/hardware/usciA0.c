@@ -1,5 +1,6 @@
 #include <diy-vt100/vt100/buffer.h>
 #include <diy-vt100/uart.h>
+#include <diy-vt100/led.h>
 #include <diy-vt100/setting.h>
 #include <diy-vt100/msp430g2553/cqueue.h>
 #include <diy-vt100/msp430g2553/ic_74xx595.h>
@@ -9,33 +10,38 @@ void usciA0_TX_interrupt() __attribute__((interrupt(USCIAB0TX_VECTOR)));
 
 cqueue_t uart_tx, uart_rx;
 
-const uint8_t uart_clkmul = '1';
-
-const uartspeed_t uart_speed[UART_SPEED_COUNT] = 
-{
-	{{4, '9', '6', '0', '0'}, {3, '1', '1', '2'}},
-	{{5, '1', '9', '2', '0', '0'}, {3, '1', '2', '0'}}
-};
-
 void usciA0_init(void)
 {
-#define usciA0_speed_collector(brx) {(uint8_t)(brx & 0x00FF), (uint8_t)(brx >> 8)}
+#define USCIA0_SPEED_COLLECTOR(brx, mctl) {(uint8_t)(brx & 0x00FF), (uint8_t)(brx >> 8), (mctl)}
 	const static struct
 	{
 		uint8_t BR0;
 		uint8_t BR1;
+		uint8_t UCA0MCTL;
 	}
 	usciA0_speed[UART_SPEED_COUNT] =
 	{
-		usciA0_speed_collector(416),
-		usciA0_speed_collector(208),
-		//usciA0_speed_collector(104, '3','8','4','0','0', 0),
-		//usciA0_speed_collector(071, '5','6','0','0','0', 0),
-		//usciA0_speed_collector(034, '1','1','5','2','0','0'),
-		//usciA0_speed_collector(031, '1','2','8','0','0','0'),
-		//usciA0_speed_collector(015, '2','5','6','0','0','0')
+		//these values directly crosspond to uart_speed in uart.h (one to one mapping)
+		USCIA0_SPEED_COLLECTOR(416, UCBRS_6),
+		USCIA0_SPEED_COLLECTOR(208, UCBRS_3),
+		USCIA0_SPEED_COLLECTOR(104, UCBRS_1),
+		USCIA0_SPEED_COLLECTOR(071, UCBRS_4),
+		USCIA0_SPEED_COLLECTOR(034, UCBRS_6),//USCIA0_SPEED_COLLECTOR(002, UCBRS_3 | UCOS16 | UCBRF_2),
+		USCIA0_SPEED_COLLECTOR(031, UCBRS_2),
+		USCIA0_SPEED_COLLECTOR(015, UCBRS_5),
 	};
-	
+	/*usciA0_speed[UART_SPEED_COUNT] =
+	{
+		//these values directly crosspond to uart_speed in uart.h (one to one mapping)
+		USCIA0_SPEED_COLLECTOR(416, UCBRS_6),
+		USCIA0_SPEED_COLLECTOR(208, UCBRS_3),
+		USCIA0_SPEED_COLLECTOR(104, UCBRS_1),
+		USCIA0_SPEED_COLLECTOR(071, UCBRS_4),
+		USCIA0_SPEED_COLLECTOR(034, UCBRS_6),
+		USCIA0_SPEED_COLLECTOR(031, UCBRS_2),
+		USCIA0_SPEED_COLLECTOR(015, UCBRS_5),
+	};
+	*/
 	/* Configure ports */
 	P1SEL = BIT1 + BIT2; /* P1.1 = RXD, P1.2=TXD */
 	P1SEL2= BIT1 + BIT2; /* P1.1 = RXD, P1.2=TXD */
@@ -58,8 +64,7 @@ void usciA0_init(void)
 
 	UCA0BR0 = usciA0_speed[parm_setting.uart_rx].BR0;
 	UCA0BR1 = usciA0_speed[parm_setting.uart_rx].BR1;
-
-	UCA0MCTL = UCBRS_6;
+	UCA0MCTL = usciA0_speed[parm_setting.uart_rx].UCA0MCTL;
 
 	/* Clear UCSWRST flag (Initialize USCI state machine) */
 	UCA0CTL1 &= ~UCSWRST;
@@ -103,12 +108,11 @@ void uart_send(const uint8_t data)
 	if(uart_tx.count < CQUEUE_SIZE)
 	{
 		cqueue_push(&uart_tx, data);
-		
-		ic_74xx595.led_kbdlock = FALSE;
+		led_off(KBDLOCK);
 	}
 	else
 	{
-		ic_74xx595.led_kbdlock = TRUE;
+		led_on(KBDLOCK);
 	}
 }
 

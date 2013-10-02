@@ -2,6 +2,7 @@
 #include <diy-vt100/msp430g2553/ic_74xx595.h>
 #include <diy-vt100/msp430g2553/cqueue.h>
 #include <diy-vt100/msp430g2553/port2.h>
+#include <diy-vt100/msp430g2553/spi.h>
 
 #include <diy-vt100/common.h>
 #include <diy-vt100/screen.h>
@@ -53,7 +54,6 @@ main(void)
 		}
 		
 		ic_74xx595_refresh();
-		
 		screen_refresh();
 		
 		_BIS_SR(LPM1_bits + GIE);
@@ -67,6 +67,7 @@ inline void __init()
 	/* hardware dependent code */
 	port1_init();
 	port2_init();
+	spi_init();
 	wdt_init();
 	timer1_A3_init();
 	flash_init();

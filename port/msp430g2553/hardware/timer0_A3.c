@@ -20,9 +20,8 @@ void timer0_A0_interrupt (void) __attribute__((interrupt(TIMER0_A0_VECTOR)));
 
 void timer0_A3_start(const uint16_t delay)
 {
-	ic_74xx595.buzzer = TRUE;
-	ic_74xx595_refresh();
-
+	ic_74xx595 |= BUZZER;
+	
 	TIMER0_A3_TACCR0 = delay;
 	TIMER0_A3_TACCTL0 = CCIE;
 
@@ -42,8 +41,7 @@ void timer0_A3_start(const uint16_t delay)
 void timer0_A0_interrupt(void)
 {
 	/* turn off buzzer */
-	ic_74xx595.buzzer = FALSE;
-	ic_74xx595_refresh();
+	ic_74xx595 &= ~BUZZER;
 	
 	TIMER0_A3_TACTL = TACLR;
 }

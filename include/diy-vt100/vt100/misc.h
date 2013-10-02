@@ -1,8 +1,6 @@
 #ifndef VT100_MISC_H
 #define VT100_MISC_H
 
-#include <diy-vt100/common.h>
-
 void vt100_refresh_connect_mode(void);
 
 void vt100_DECKPAM(void);

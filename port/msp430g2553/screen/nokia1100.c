@@ -271,22 +271,42 @@ void setupB_refresh()
 	nokia1100_buffer[7][12].data = '0';
 	
 	
-	uint8_t bitrate_size = (uint8_t)uart_speed[setting.uart_rx].bitrate[0];
-	uint8_t *bitrate = (uint8_t *)uart_speed[setting.uart_rx].bitrate + 1;
-	
 	col_t j;
 	
-	for(j=0; j < 6; j++)
+	//print rx speed setting
+	for(j=0; j < 8; j++)
 	{
-		nokia1100_buffer[5][j + 8].data = (j < bitrate_size) ? bitrate[j] : ' ';
+		//we reached the end of string
+		if(uart_speed[setting.uart_rx].bitrate[j] == '\0')
+		{
+			while(j < 8)
+			{
+				nokia1100_buffer[5][j + 8].data = ' ';
+				j++;
+			}
+			
+			break;
+		}
+		
+		nokia1100_buffer[5][j + 8].data = uart_speed[setting.uart_rx].bitrate[j];
 	}
 	
-	bitrate_size = (uint8_t)uart_speed[setting.uart_tx].bitrate[0];
-	bitrate = (uint8_t *)uart_speed[setting.uart_tx].bitrate + 1;
-	
-	for(j=0; j < 6; j++)
+	//print uart_tx settings
+	for(j=0; j < 8; j++)
 	{
-		nokia1100_buffer[4][j + 8].data = (j < bitrate_size) ? bitrate[j] : ' ';
+		//we reached the end of string
+		if(uart_speed[setting.uart_tx].bitrate[j] == '\0')
+		{
+			while(j < 8)
+			{
+				nokia1100_buffer[4][j + 8].data = ' ';
+				j++;
+			}
+			
+			break;
+		}
+		
+		nokia1100_buffer[4][j + 8].data = uart_speed[setting.uart_tx].bitrate[j];
 	}
 }
 

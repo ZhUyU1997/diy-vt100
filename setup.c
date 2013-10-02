@@ -7,7 +7,7 @@
 
 uint8_t setup_number;
 
-void setup()
+void setup(void)
 {
 	setting.bits.SETUP_SHOW ^= TRUE;
 

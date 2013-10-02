@@ -9,7 +9,7 @@ dataprop_t vt100_dataprop;
 
 /* double height line [top half] */
 void
-vt100_DECDHL_top()
+vt100_DECDHL_top(void)
 {
 	vt100_rowprop[vt100_cursor.row].double_height = TRUE;
 	vt100_rowprop[vt100_cursor.row].double_height_pos = TRUE;
@@ -17,7 +17,7 @@ vt100_DECDHL_top()
 
 /* double height line [bottom half]*/
 void
-vt100_DECDHL_bottom()
+vt100_DECDHL_bottom(void)
 {
 	vt100_rowprop[vt100_cursor.row].double_height = TRUE;
 	vt100_rowprop[vt100_cursor.row].double_height_pos = FALSE;
@@ -25,14 +25,14 @@ vt100_DECDHL_bottom()
 
 /* double width line */
 void 
-vt100_DECDWL()
+vt100_DECDWL(void)
 {
 	vt100_rowprop[vt100_cursor.row].double_width = TRUE;
 }
 
 /* select graphics rendition */
 void 
-vt100_SGR()
+vt100_SGR(void)
 {
 	for(uint8_t i=0; i < param.count; i++)
 	{

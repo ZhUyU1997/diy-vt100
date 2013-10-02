@@ -233,7 +233,7 @@ void vt100_state(const uint8_t data)
 	}
 }
 
-void vt100_sequence_terminate()
+void vt100_sequence_terminate(void)
 {
 	/* reset to C0 state (this work is already preformed by worker function) */
 	//state_current = (struct __state)vt100_state_C0;

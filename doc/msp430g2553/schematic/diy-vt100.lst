@@ -1,0 +1,38 @@
+eeschema (2013-june-11)-stable  >> Creation date: Wed 02 Oct 2013 09:11:27 PM IST
+#Cmp ( order = Reference )
+| B1         BUZZER      
+| D1         DIODE       
+| KBD_LOCKED1 LED         
+| LCD1       NOKIA1100_LCD
+| OFFLINE1   LED         
+| ONLINE1    LED         
+| P1         MINIDIN_6_FEMALE
+| PROG_1     LED         
+| PROG_2     LED         
+| PROG_3     LED         
+| PROG_4     LED         
+| Q1         BC148       
+| R1         220 Ohm     
+| U1         MSP430G2553IN20
+| U2         74HC595     
+#End Cmp
+
+#Cmp ( order = Value )
+| BUZZER       B1        
+| DIODE        D1        
+| LED          KBD_LOCKED1
+| NOKIA1100_LCD LCD1      
+| LED          OFFLINE1  
+| LED          ONLINE1   
+| MINIDIN_6_FEMALE P1        
+| LED          PROG_1    
+| LED          PROG_2    
+| LED          PROG_3    
+| LED          PROG_4    
+| BC148        Q1        
+| 220 Ohm      R1        
+| 74HC595      U2        
+| MSP430G2553IN20 U1        
+#End Cmp
+
+#End List

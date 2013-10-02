@@ -7,7 +7,7 @@ vt100_cursor_bkp;
 
 /* cursor backward */
 void
-vt100_CUB()
+vt100_CUB(void)
 {
 	/* TODO: margin are not supported */
 	vt100_cursor.col = constaint(vt100_cursor.col - param.data[0], 0, SCREEN_COL - 1);
@@ -15,7 +15,7 @@ vt100_CUB()
 
 /* cursor forward */
 void
-vt100_CUF()
+vt100_CUF(void)
 {
 	/* TODO: margin are not supported */
 	vt100_cursor.col = constaint(vt100_cursor.col + param.data[0], 0, SCREEN_COL - 1);
@@ -23,7 +23,7 @@ vt100_CUF()
 
 /* cursor up */
 void
-vt100_CUU()
+vt100_CUU(void)
 {
 	/* TODO: margin are not supported | scroll up are not supported */	
 	vt100_cursor.row = constaint(vt100_cursor.row - param.data[0], 0, SCREEN_ROW - 1);
@@ -31,7 +31,7 @@ vt100_CUU()
 
 /* cursor down */
 void
-vt100_CUD()
+vt100_CUD(void)
 {
 	/* TODO: margin are not supported | scroll down are not supported */
 	vt100_cursor.row = constaint(vt100_cursor.row + param.data[0], 0, SCREEN_ROW - 1);
@@ -39,7 +39,7 @@ vt100_CUD()
 
 /* cursor position */
 void
-vt100_CUP()
+vt100_CUP(void)
 {
 	vt100_cursor.row = constaint(param.data[0], 0, SCREEN_COL - 1);
 	vt100_cursor.col = constaint(param.data[1], 0, SCREEN_COL - 1);
@@ -47,7 +47,7 @@ vt100_CUP()
 
 /* cursor restore */
 void 
-vt100_DECRC()
+vt100_DECRC(void)
 {
 	/* TODO: save all settings */
 	vt100_cursor = vt100_cursor_bkp;
@@ -55,7 +55,7 @@ vt100_DECRC()
 
 /* cursor save */
 void 
-vt100_DECSC()
+vt100_DECSC(void)
 {
 	vt100_cursor_bkp = vt100_cursor;
 }
@@ -63,7 +63,7 @@ vt100_DECSC()
 /* move down by one line
  * and if at the bottom, scroll up */
 void
-vt100_IND()
+vt100_IND(void)
 {
 	if(!(++vt100_cursor.row < SCREEN_COL))
 	{
@@ -75,7 +75,7 @@ vt100_IND()
 /* move up by one line
  * and if at the top, scroll down */
 void
-vt100_RI()
+vt100_RI(void)
 {
 	if(vt100_cursor.row == 0)
 	{

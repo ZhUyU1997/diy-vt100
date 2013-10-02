@@ -53,12 +53,12 @@ vt100_putch(const uint8_t data)
  * fill E everywhere
  */
 void 
-vt100_DECALN()
+vt100_DECALN(void)
 {
 	screen_full_E();
 }
 
-void vt100_ED()
+void vt100_ED(void)
 {
 	switch(param.data[0])
 	{
@@ -97,7 +97,7 @@ void vt100_ED()
 	}
 }
 
-void vt100_EL()
+void vt100_EL(void)
 {
 	switch(param.data[0])
 	{
@@ -121,7 +121,7 @@ void vt100_EL()
 
 /* \n */
 void
-vt100_LF()
+vt100_LF(void)
 {
 	vt100_cursor.row++;
 	
@@ -139,13 +139,13 @@ vt100_LF()
 
 /* \r */
 void
-vt100_CR()
+vt100_CR(void)
 {
 	vt100_cursor.col = 0;
 }
 
 void
-vt100_NEL()
+vt100_NEL(void)
 {
 	vt100_cursor.row++;
 	

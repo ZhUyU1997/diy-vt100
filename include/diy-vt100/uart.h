@@ -3,23 +3,25 @@
 
 #include <diy-vt100/common.h>
 #include <diy-vt100/setting.h>
-#include <diy-vt100/port/uart.h>
+
+#define UART_SPEED_COUNT 7
 
 typedef struct
 {
-	uint8_t bitrate[6];
-	uint8_t value[4];
+	char *bitrate;
+	char *value;
+	char clkmul;
 } uartspeed_t;
 
 extern const uartspeed_t uart_speed[UART_SPEED_COUNT];
-extern const uint8_t uart_clkmul;
 
 void uart_loopback(edable_t);
 bool_t uart_disconnected(void);
 
 void uart_send(const uint8_t data);
 void uart_send_uint8(uint8_t val);
-void uart_send_array(const uint8_t *arr, const uint8_t size);
+//void uart_send_array(const uint8_t *arr, const uint8_t size);
+void uart_send_string(const char *string);
 
 inline void uart_send_return(void)
 {

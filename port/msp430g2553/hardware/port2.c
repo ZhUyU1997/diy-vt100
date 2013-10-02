@@ -22,20 +22,17 @@ void port2_init(void)
 	/* interrupt goes to pin2_interrupt() */
 
 	/* output port */
-	P2DIR |= NOKIA1100_SS | NOKIA1100_CLK | NOKIA1100_MOSI;
+	P2DIR |= NOKIA1100_SS;
 	P2OUT |= NOKIA1100_SS;
-
-	/* debugging */
-	P1DIR |= BIT6;
-	P1OUT &= ~BIT6;
+	
+	P2DIR |= IC_74XX595_STCP;
+	P2OUT |= IC_74XX595_STCP;
 }
 
 void port2_interrupt(void)
 {
 	static uint8_t data;
 	static uint8_t index;
-	
-	__flip(P1OUT, BIT6);
 	
 	__low(P2IFG, KEYBOARD_PS2_CLK);
 	
@@ -71,7 +68,7 @@ void port2_interrupt(void)
 			__bic_status_register_on_exit(LPM1_bits);
 		default:
 			index = 0;
-		return;
+			return;
 	}
 	
 	index++;

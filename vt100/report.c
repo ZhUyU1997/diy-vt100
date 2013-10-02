@@ -9,7 +9,7 @@
 
 /* report terminal parameter (requested via DECREQTPARAM) */
 void
-vt100_DECREPTPARAM()
+vt100_DECREPTPARAM(void)
 {
 	setting.bits.UNSOLIC = param.data[0] ? FALSE : TRUE;
 	
@@ -34,15 +34,13 @@ vt100_DECREPTPARAM()
 	uart_send(parm_setting.bits.BPC ? '1' : '2');
 	
 	uart_send(';');
-	uart_send_array( &uart_speed[parm_setting.uart_tx].value[1], 
-						uart_speed[parm_setting.uart_tx].value[0]);
+	uart_send_string(uart_speed[parm_setting.uart_tx].value);
 	
 	uart_send(';');
-	uart_send_array( &uart_speed[parm_setting.uart_rx].value[1], 
-						uart_speed[parm_setting.uart_rx].value[0]);
+	uart_send_string(uart_speed[parm_setting.uart_rx].value);
 	
 	uart_send(';');
-	uart_send(uart_clkmul);
+	uart_send(uart_speed[parm_setting.uart_rx].clkmul);
 	
 	uart_send(';');
 	uart_send('0');
@@ -52,7 +50,7 @@ vt100_DECREPTPARAM()
 
 /* device status report */
 void
-vt100_DSR()
+vt100_DSR(void)
 {
 	uart_send(ASCII_ESCAPE);
 	uart_send('[');
@@ -78,7 +76,7 @@ vt100_DSR()
 
 /* report device ID
  * identify terminal */
-void vt100_DECID()
+void vt100_DECID(void)
 {
 	uart_send(ASCII_ESCAPE);
 	uart_send('[');
