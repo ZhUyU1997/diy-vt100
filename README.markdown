@@ -45,3 +45,7 @@ NOTE:
 * use F5 to load setup.
 * vt100 had only four Function keys (laymans language).
 * you can also use SW2 of MSP430G2 LaunchPad DEV board.
+
+Licence:
+--------
+GNU GPLv3 or later
